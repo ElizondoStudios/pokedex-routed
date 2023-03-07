@@ -1,1 +1,47 @@
+.pokemon-img{
+    transition: all 0.2s;
+    cursor: pointer;
+}
+    .pokemon-img:hover{
+        transform: translateY(-4%);
+    }
+
+.change-buttons--right,.change-buttons--left{
+    position: absolute;
+    top: 50vh;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: transparent;
+    background-size: 50px;
+    background-position: center;
+    width: 50px;
+    height: 80px;
+
+    transition: all 0.2s;
+}
+
+.change-buttons--right{
+    background-image: url("/src/assets/right-arrow.png");
+    right: 8vw;
+}
+
+.change-buttons--left{
+    background-image: url("/src/assets/left-arrow.png");
+    left: 8vw;
+}
+
+    .change-buttons--left:hover, .change-buttons--right:hover{
+        transform: scale(110%);
+    }
+
+@media (orientation: portrait) {
+    .change-buttons--right,.change-buttons--left{
+        top: 30vh;
+    }
+}
+
+    
+
+
 

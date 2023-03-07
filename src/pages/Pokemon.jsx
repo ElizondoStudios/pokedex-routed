@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-function Pokemon() {
+function Pokemon(props) {
     const {id}= useParams()
     const [Pokemon, setPokemon] = useState({
         id: "1",
@@ -18,21 +18,34 @@ function Pokemon() {
             }}
         ]
     })
+    const [Sprite, setSprite] = useState(Pokemon.sprites.front_default)
 
     useEffect(() => {
       fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then(res => res.json())
       .then(data => {
         setPokemon(data)
+        setSprite(data.sprites.front_default)
+        props.changeCurrentPokemon(data.id)
       })
     },[id])
+
+
+    function changeSprite(){
+        setSprite(
+            prevSprites => prevSprites.includes("shiny")? 
+            Pokemon.sprites.front_default:
+            Pokemon.sprites.front_shiny
+        )
+    }
 
     return ( 
         <div className="container d-flex flex-column align-items-center mt-4">
             <div className="card text-bg-dark border border-light border-2" style={{width: "50vw", maxWidth: "400px"}}>
-                <img src={Pokemon.sprites.front_default}
+                <img src={Sprite}
                  alt="Pokemon sprite"
-                 className="card-img-top"
+                 className="pokemon-img card-img-top"
+                 onClick={changeSprite}
                 />
                 <div className="card-body">
                     <h3 className="card-title">{Pokemon.species.name}</h3>
