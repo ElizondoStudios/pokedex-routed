@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+import PokemonCard from "../components/PokemonCard";
+
 function Pokemon(props) {
     const {id}= useParams()
     const [Pokemon, setPokemon] = useState({
@@ -41,25 +43,7 @@ function Pokemon(props) {
 
     return ( 
         <div className="container d-flex flex-column align-items-center mt-4">
-            <div className="card text-bg-dark border border-light border-2" style={{width: "50vw", maxWidth: "400px"}}>
-                <img src={Sprite}
-                 alt="Pokemon sprite"
-                 className="pokemon-img card-img-top"
-                 onClick={changeSprite}
-                />
-                <div className="card-body">
-                    <h3 className="card-title">{Pokemon.species.name}</h3>
-                    <p className="card-text">
-                        Number: {Pokemon.id}
-                        <br/>
-                        {Pokemon.types.length>1? `Types: ${Pokemon.types[0].type.name}/${Pokemon.types[1].type.name}`:
-                            `Type: ${Pokemon.types[0].type.name}`
-                        }
-                        <br/>
-                        Height: {Pokemon.height/10}m Weight: {Pokemon.weight/10}kg
-                    </p>
-                </div>
-            </div>
+            <PokemonCard Sprite={Sprite} Pokemon={Pokemon} changeSprite={changeSprite}/>
         </div>
      );
 }
