@@ -14,7 +14,6 @@ function App() {
 
   function changeCurrentPokemon(num){
     currentPokemon.current= num
-    console.log(currentPokemon.current);
   }
 
   function nextPokemon(){

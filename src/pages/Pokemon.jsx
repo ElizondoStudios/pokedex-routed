@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import PokemonCard from "../components/PokemonCard";
+import Abilities from "../components/Abilities";
 
 function Pokemon(props) {
     const {id}= useParams()
@@ -18,6 +19,20 @@ function Pokemon(props) {
             {type:{
                 name: "poison"
             }}
+        ],
+        abilities:[
+            {
+                ability: {
+                    name: "overgrow",
+                    url:"https://pokeapi.co/api/v2/ability/65/"
+                }
+            },
+            {
+                ability: {
+                    name: "chlorophyll",
+                    url:"https://pokeapi.co/api/v2/ability/34/"
+                }
+            }
         ]
     })
     const [Sprite, setSprite] = useState(Pokemon.sprites.front_default)
@@ -42,8 +57,9 @@ function Pokemon(props) {
     }
 
     return ( 
-        <div className="container d-flex flex-column align-items-center mt-4">
+        <div className="container d-flex flex-column align-items-center mt-4 bg-dar">
             <PokemonCard Sprite={Sprite} Pokemon={Pokemon} changeSprite={changeSprite}/>
+            <Abilities abilities={Pokemon.abilities}/>
         </div>
      );
 }
