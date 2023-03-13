@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 
 import PokemonCard from "../components/PokemonCard";
 import Abilities from "../components/Abilities";
+import Moves from "../components/Moves";
+import Stats from "../components/Stats";
 
 function Pokemon(props) {
     const {id}= useParams()
@@ -33,6 +35,12 @@ function Pokemon(props) {
                     url:"https://pokeapi.co/api/v2/ability/34/"
                 }
             }
+        ],
+        moves:[
+
+        ],
+        stats:[
+
         ]
     })
     const [Sprite, setSprite] = useState(Pokemon.sprites.front_default)
@@ -59,7 +67,9 @@ function Pokemon(props) {
     return ( 
         <div className="container d-flex flex-column align-items-center mt-4 bg-dar">
             <PokemonCard Sprite={Sprite} Pokemon={Pokemon} changeSprite={changeSprite}/>
+            <Stats stats={Pokemon.stats}/>
             <Abilities abilities={Pokemon.abilities}/>
+            <Moves moves={Pokemon.moves}/>
         </div>
      );
 }

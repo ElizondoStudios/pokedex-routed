@@ -1,8 +1,10 @@
-function Table({tableBody, tableHead}) {
+import { nanoid } from "nanoid";
 
-    const tableHeadJSX= tableHead.map(e => <th>{e}</th>)
+function Table({tableBody, tableHead, displayInfo}) {
 
-    const tableBodyJSX= tableBody.map(e => <tr><td>{e}</td></tr>)
+    const tableHeadJSX= tableHead.map(e => <th key={nanoid()}>{e}</th>)
+
+    const tableBodyJSX= tableBody.map(e => <tr key={nanoid()}><td>{e}</td></tr>)
 
     return ( 
         <div className="container-md">
@@ -17,7 +19,6 @@ function Table({tableBody, tableHead}) {
                 </tbody>
             </table>
         </div>
-        
      )
 }
 
