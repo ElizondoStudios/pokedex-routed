@@ -1,15 +1,26 @@
-import Table from "./Table";
+import React, { useState, useEffect } from 'react';
 import { nanoid } from "nanoid";
+import Table from "./Table";
+
 
 function Stats({stats}) {
+    const [ShowStats, setShowStats] = useState(false)
     const statNames=stats.map(e => e.stat.name)
     const statValues= stats.map(e => e.base_stat)
+
+    useEffect(() => {
+        setShowStats(false)
+    }, [stats])
+
+    const toggleShowStats= () => {
+      setShowStats(prevShowStats => !prevShowStats)
+    }
 
     const getStyleStat= (val) => {
       const num= parseInt(val)
         if(num<40)
             return "danger"
-        else if(num<80)
+        else if(num<90)
             return "warning"
         return "success"
     }
@@ -17,26 +28,29 @@ function Stats({stats}) {
     const tableEntries= statNames.map((name, i) => 
         <tr key={nanoid()}>
             <td>{name}</td>
-            <td className={`table-${getStyleStat(statValues[i])}`}>{statValues[i]}</td>
+            <td className={`text-${getStyleStat(statValues[i])}`}>{statValues[i]}</td>
         </tr>
     )
 
     return ( 
         <div className="container mt-4">
-            <h2>Stats:</h2>
-            <div className="container-md">
-            <table className="table table-dark table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name:</th>
-                        <th>Value:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableEntries}
-                </tbody>
-            </table>
-        </div>
+            <h2 onClick={toggleShowStats} style={{cursor: "pointer"}}>Stats:</h2>
+            {
+                ShowStats &&
+                <div className="container-md">
+                    <table className="table table-dark table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name:</th>
+                                <th>Value:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableEntries}
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
      )
 }
