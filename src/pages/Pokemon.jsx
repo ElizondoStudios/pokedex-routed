@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 import PokemonCard from "../components/PokemonCard";
 import Abilities from "../components/Abilities";
@@ -8,6 +8,7 @@ import Stats from "../components/Stats";
 
 function Pokemon(props) {
     const {id}= useParams()
+    const navigator= useNavigate()
     const [Pokemon, setPokemon] = useState({
         id: "1",
         height: "7",
@@ -53,6 +54,7 @@ function Pokemon(props) {
         setSprite(data.sprites.front_default)
         props.changeCurrentPokemon(data.id)
       })
+      .catch(error => {navigator("/")})
     },[id])
 
 

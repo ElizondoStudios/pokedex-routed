@@ -1,7 +1,10 @@
 function ChangeButtons(props) {
     return ( 
         <div className="change-buttons">
-            <button className="change-buttons--left" onClick={props.prevPokemon}></button>
+            {
+                props.currentPokemon>1 &&
+                <button className="change-buttons--left" onClick={props.prevPokemon}></button>
+            }
             <button className="change-buttons--right" onClick={props.nextPokemon}></button>
         </div>
      )

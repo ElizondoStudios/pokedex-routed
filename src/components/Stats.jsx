@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { nanoid } from "nanoid";
-import Table from "./Table";
 
 
 function Stats({stats}) {

@@ -1,3 +1,5 @@
+/* ##### pokemon card image ##### */
+
 .pokemon-img{
     transition: all 0.2s;
     cursor: pointer;
@@ -5,6 +7,8 @@
     .pokemon-img:hover{
         transform: translateY(-4%);
     }
+
+/* ##### change buttons #####*/
 
 .change-buttons--right,.change-buttons--left{
     position: absolute;
@@ -35,10 +39,38 @@
         transform: scale(110%);
     }
 
+/*##### Changing button top for different viewports ##### */
+
 @media (orientation: portrait) {
     .change-buttons--right,.change-buttons--left{
         top: 30vh;
     }
+}
+
+
+/* ##### spinning pokeball from home ##### */
+.pokeball-background{
+    width: 60vw;
+    max-width: 400px;
+    animation: infinite 2s spinning-animation;
+}
+
+    @keyframes spinning-animation {
+        100%{
+            transform: rotate(180deg);
+        }
+    }
+
+/* ##### prefers reduced motion ##### */
+@media(prefers-reduced-motion){
+    .pokemon-img:hover{
+        transform: none;
+    }
+
+    .pokeball-background{
+        animation: none;
+    }
+
 }
 
 

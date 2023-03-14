@@ -8,7 +8,7 @@ import ChangeButtons from "./components/ChangeButtons";
 
 function App() {
 
-  const currentPokemon= useRef(1)
+  const currentPokemon= useRef(0)
 
   const navigate= useNavigate()
 
@@ -30,7 +30,7 @@ function App() {
   return ( 
     <div className="App container mt-4">
       <SearchBar/>
-      <ChangeButtons nextPokemon={nextPokemon} prevPokemon={prevPokemon}/>
+      <ChangeButtons currentPokemon={currentPokemon.current} nextPokemon={nextPokemon} prevPokemon={prevPokemon}/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/:id" element={<Pokemon changeCurrentPokemon={changeCurrentPokemon}/>}/>

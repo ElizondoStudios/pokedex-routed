@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import { nanoid } from 'nanoid';
 
 function Abilities({abilities}) {
     const [ShowAbilities, setShowAbilities] = useState(false)
@@ -33,7 +33,7 @@ function Abilities({abilities}) {
     }
 
     const tableBody= Abilities.current.map(e =>
-        <tr>
+        <tr key={nanoid()}>
             <td>{e.name}</td>
             <td>{e.description}</td>
         </tr>
