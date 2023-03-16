@@ -54,7 +54,7 @@ function Pokemon(props) {
         setSprite(data.sprites.front_default)
         props.changeCurrentPokemon(data.id)
       })
-      .catch(error => {navigator("/")})
+      .catch(error => {navigator("/not-found")})
     },[id])
 
 

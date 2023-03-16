@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import SearchBar from "./components/SearchBar";
 import Pokemon from "./pages/Pokemon";
 import ChangeButtons from "./components/ChangeButtons";
+import NotFound from "./pages/NotFound";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/:id" element={<Pokemon changeCurrentPokemon={changeCurrentPokemon}/>}/>
+        <Route path="/not-found" element={<NotFound currentPokemon={currentPokemon.current}/>}/>
+        <Route path="*" element={<NotFound currentPokemon={currentPokemon.current}/>}/>
       </Routes>
     </div>
    )

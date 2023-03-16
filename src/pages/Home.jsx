@@ -11,7 +11,6 @@ function Home() {
               <img src={pokeball_background_img} alt="pokeball" className="pokeball-background"/>
             </div>
           </div>
-          
         </div>
      )
 }

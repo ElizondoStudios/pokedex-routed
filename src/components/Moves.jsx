@@ -5,9 +5,9 @@ function Moves({moves}) {
     const [ShowMoves, setShowMoves] = useState(false)
     const movesArr= moves.map(e => e.move.name)
 
-    useEffect(() => {
-        setShowMoves(false)
-    }, [moves])
+    // useEffect(() => {
+    //     setShowMoves(false)
+    // }, [moves])
 
     const toggleShowMoves= () => {
       setShowMoves(prevShowMoves => !prevShowMoves)

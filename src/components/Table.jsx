@@ -7,7 +7,7 @@ function Table({tableBody, tableHead, displayInfo}) {
     const tableBodyJSX= tableBody.map(e => <tr key={nanoid()}><td>{e}</td></tr>)
 
     return ( 
-        <div className="container-md">
+        <div className="container">
             <table className="table table-dark table-hover table-bordered">
                 <thead>
                     <tr>
